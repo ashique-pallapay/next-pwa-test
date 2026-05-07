@@ -1,48 +1,12 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import RegisterSW from "./register-sw";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "My App",
-  description: "Progressive Web App with offline support",
-  manifest: "/manifest.json",
-  themeColor: "#ffffff",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "My App",
-  },
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  viewportFit: "cover",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }:any) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html>
+      <body>
+        <RegisterSW />
+        {children}
+      </body>
     </html>
   );
 }
